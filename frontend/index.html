@@ -83,34 +83,31 @@
             <div class="grid-3-cols" style="gap: 32px;">
                 <!-- Transform Options -->
                 <div>
-                    <label class="checkbox-neo" style="margin-bottom: 16px;">
-                        <input type="checkbox" id="opt-structure" checked>
-                        <span class="checkbox-neo-box"></span>
+                    <label style="display: flex; align-items: start; gap: 12px; margin-bottom: 24px; cursor: pointer;">
+                        <input type="checkbox" class="checkbox-neo" id="opt-structure" checked style="margin-top: 2px; flex-shrink: 0;">
                         <div>
-                            <div class="checkbox-neo-label">구조 재배열</div>
-                            <p style="font-size: 12px; color: var(--secondary-text); margin: 4px 0 0 0;">
+                            <div style="font-weight: 700; font-size: 14px; margin-bottom: 4px; color: var(--primary-text);">구조 재배열</div>
+                            <p style="font-size: 12px; color: var(--secondary-text); margin: 0; line-height: 1.5;">
                                 문장 분리/합치기, 순서 변경
                             </p>
                         </div>
                     </label>
 
-                    <label class="checkbox-neo" style="margin-bottom: 16px;">
-                        <input type="checkbox" id="opt-vocabulary" checked>
-                        <span class="checkbox-neo-box" style="border-color: var(--accent-3);"></span>
+                    <label style="display: flex; align-items: start; gap: 12px; margin-bottom: 24px; cursor: pointer;">
+                        <input type="checkbox" class="checkbox-neo" id="opt-vocabulary" checked style="margin-top: 2px; flex-shrink: 0; border-color: var(--accent-3);">
                         <div>
-                            <div class="checkbox-neo-label">어휘 다양화</div>
-                            <p style="font-size: 12px; color: var(--secondary-text); margin: 4px 0 0 0;">
+                            <div style="font-weight: 700; font-size: 14px; margin-bottom: 4px; color: var(--primary-text);">어휘 다양화</div>
+                            <p style="font-size: 12px; color: var(--secondary-text); margin: 0; line-height: 1.5;">
                                 동의어 치환, 구어체 혼합
                             </p>
                         </div>
                     </label>
 
-                    <label class="checkbox-neo">
-                        <input type="checkbox" id="opt-noise" checked>
-                        <span class="checkbox-neo-box" style="border-color: var(--accent-2);"></span>
+                    <label style="display: flex; align-items: start; gap: 12px; cursor: pointer;">
+                        <input type="checkbox" class="checkbox-neo" id="opt-noise" checked style="margin-top: 2px; flex-shrink: 0; border-color: var(--accent-2);">
                         <div>
-                            <div class="checkbox-neo-label">노이즈 주입</div>
-                            <p style="font-size: 12px; color: var(--secondary-text); margin: 4px 0 0 0;">
+                            <div style="font-weight: 700; font-size: 14px; margin-bottom: 4px; color: var(--primary-text);">노이즈 주입</div>
+                            <p style="font-size: 12px; color: var(--secondary-text); margin: 0; line-height: 1.5;">
                                 퍼플렉시티/burstiness 조정
                             </p>
                         </div>
