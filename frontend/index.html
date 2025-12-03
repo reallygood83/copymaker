@@ -13,29 +13,6 @@
 
     <!-- Neo-Brutalism Styles -->
     <link rel="stylesheet" href="/frontend/style.css">
-
-    <!-- Firebase Configuration -->
-    <script>
-        window.FIREBASE_CONFIG = {
-            apiKey: "AIzaSyDEbJJo3X9F0xUlLy1qzKPq9Asz-vKuFX0",
-            authDomain: "copymaker-fb016.firebaseapp.com",
-            projectId: "copymaker-fb016",
-            storageBucket: "copymaker-fb016.firebasestorage.app",
-            messagingSenderId: "587357737182",
-            appId: "1:587357737182:web:d4ffb88d946d73a767324f",
-            measurementId: "G-55MXQT7JWL"
-        };
-    </script>
-
-    <!-- Firebase SDK v9+ (ESM) -->
-    <script type="importmap">
-      {
-        "imports": {
-          "firebase/app": "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js",
-          "firebase/auth": "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js"
-        }
-      }
-    </script>
 </head>
 <body>
     <!-- Auth & Special Code Modal -->
@@ -48,98 +25,27 @@
                 </div>
             </div>
 
-            <!-- Login Form -->
-            <div id="login-form-container">
-                <h2 class="heading-neo" style="text-align: center; margin-bottom: 8px;">로그인</h2>
-                <p style="text-align: center; margin-bottom: 32px; color: var(--secondary-text);">
-                    Not_GPT 서비스를 이용하려면 로그인이 필요합니다.
-                </p>
-
-                <form id="login-form" style="margin-bottom: 24px;">
-                    <div style="margin-bottom: 20px;">
-                        <label class="label-neo" for="login-email">이메일</label>
-                        <input type="email" id="login-email" class="input-neo"
-                               placeholder="name@example.com" required>
-                    </div>
-                    <div style="margin-bottom: 20px;">
-                        <label class="label-neo" for="login-password">비밀번호</label>
-                        <input type="password" id="login-password" class="input-neo"
-                               placeholder="••••••••" required>
-                    </div>
-                    <div id="login-error" class="alert-neo alert-neo-error" style="display: none; margin-bottom: 16px;"></div>
-
-                    <button type="submit" class="btn-neo btn-neo-primary" style="width: 100%;">
-                        로그인
-                    </button>
-                </form>
-
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-                    <button type="button" id="btn-show-signup" class="btn-neo btn-neo-secondary">
-                        회원가입
-                    </button>
-                    <a href="#" target="_blank" class="btn-neo btn-neo-accent2" style="text-decoration: none; display: flex; align-items: center; justify-content: center;">
-                        사용 신청 ↗
-                    </a>
-                </div>
-            </div>
-
-            <!-- Signup Form -->
-            <div id="signup-form-container" style="display: none;">
-                <h2 class="heading-neo" style="text-align: center; margin-bottom: 8px;">회원가입</h2>
-                <p style="text-align: center; margin-bottom: 32px; color: var(--secondary-text);">
-                    새로운 계정을 생성합니다.
-                </p>
-
-                <form id="signup-form" style="margin-bottom: 24px;">
-                    <div style="margin-bottom: 20px;">
-                        <label class="label-neo" for="signup-email">이메일</label>
-                        <input type="email" id="signup-email" class="input-neo"
-                               placeholder="name@example.com" required>
-                    </div>
-                    <div style="margin-bottom: 20px;">
-                        <label class="label-neo" for="signup-password">비밀번호</label>
-                        <input type="password" id="signup-password" class="input-neo"
-                               placeholder="••••••••" required>
-                    </div>
-                    <div id="signup-error" class="alert-neo alert-neo-error" style="display: none; margin-bottom: 16px;"></div>
-
-                    <button type="submit" class="btn-neo btn-neo-accent3" style="width: 100%;">
-                        가입하기
-                    </button>
-                </form>
-
-                <button type="button" id="btn-show-login" class="btn-neo btn-neo-outline" style="width: 100%;">
-                    이미 계정이 있으신가요? 로그인
-                </button>
-            </div>
-
             <!-- Special Code Form -->
-            <div id="code-form-container" style="display: none;">
+            <div id="code-form-container">
                 <h2 class="heading-neo" style="text-align: center; margin-bottom: 8px;">특별 코드 입력</h2>
                 <p style="text-align: center; margin-bottom: 32px; color: var(--secondary-text);">
-                    서비스 사용을 위해 코드를 입력해주세요.
+                    Not_GPT 서비스를 사용하려면 특별 코드를 입력해주세요.
                 </p>
 
-                <form id="code-form" style="margin-bottom: 24px;">
+                <form id="code-form">
                     <div style="margin-bottom: 20px;">
                         <input type="text" id="special-code" class="input-neo"
                                style="text-align: center; font-size: 24px; letter-spacing: 8px; text-transform: uppercase; font-weight: 800;"
-                               placeholder="CODE" required>
+                               placeholder="CODE" required autocomplete="off">
                     </div>
                     <div id="code-error" class="alert-neo alert-neo-error" style="display: none; margin-bottom: 16px; text-align: center;">
                         코드가 올바르지 않습니다.
                     </div>
 
-                    <button type="submit" class="btn-neo" style="width: 100%; background: #4ECDC4;">
-                        코드 확인
+                    <button type="submit" class="btn-neo btn-neo-primary" style="width: 100%;">
+                        확인
                     </button>
                 </form>
-
-                <div style="text-align: center;">
-                    <button id="btn-logout-code" class="btn-neo btn-neo-outline btn-neo-small">
-                        로그아웃
-                    </button>
-                </div>
             </div>
         </div>
     </div>
@@ -158,10 +64,6 @@
                     </div>
                 </div>
                 <div style="display: flex; align-items: center; gap: 16px;">
-                    <div id="user-info" style="display: none; font-size: 14px; color: var(--secondary-text);"></div>
-                    <button id="btn-logout" class="btn-neo btn-neo-small btn-neo-outline" style="display: none;">
-                        로그아웃
-                    </button>
                     <div id="status-indicator" class="badge-neo badge-neo-success">
                         시스템 준비
                     </div>
