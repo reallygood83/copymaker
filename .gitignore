@@ -5,6 +5,7 @@
 *.key
 *.pem
 secrets/
+VERCEL_ENV_SETUP.md
 
 # Firebase 설정 (실제 API 키 포함된 파일)
 firebase-config.js
