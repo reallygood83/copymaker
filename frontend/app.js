@@ -34,7 +34,14 @@ const elements = {
     codeFormContainer: document.getElementById('code-form-container'),
     codeForm: document.getElementById('code-form'),
     codeError: document.getElementById('code-error'),
-    specialCodeInput: document.getElementById('special-code')
+    specialCodeInput: document.getElementById('special-code'),
+
+    // Process Modal Elements
+    stepAnalyze: document.getElementById('step-analyze'),
+    stepTransform: document.getElementById('step-transform'),
+    stepComplete: document.getElementById('step-complete'),
+    progressBar: document.getElementById('progress-bar'),
+    statusText: document.getElementById('status-text')
 };
 
 // State
@@ -132,6 +139,19 @@ async function handleTransform() {
     setLoading(true);
 
     try {
+        // Step 1: Analyze (0-33%)
+        updateProcessStep('analyze');
+        updateProgress(10);
+        updateStatusText('텍스트를 분석하는 중...');
+
+        await new Promise(resolve => setTimeout(resolve, 300)); // Visual feedback
+        updateProgress(33);
+
+        // Step 2: Transform (33-66%)
+        updateProcessStep('transform');
+        updateProgress(40);
+        updateStatusText('AI가 텍스트를 변환하는 중...');
+
         const response = await fetch(`${API_BASE}/api/transform`, {
             method: 'POST',
             headers: {
@@ -150,14 +170,27 @@ async function handleTransform() {
 
         if (!response.ok) throw new Error('Transform failed');
 
+        updateProgress(66);
         const data = await response.json();
+
+        // Step 3: Complete (66-100%)
+        updateProcessStep('complete');
+        updateProgress(80);
+        updateStatusText('결과를 준비하는 중...');
 
         // Update UI with results
         elements.outputText.value = data.transformed;
         updateMetrics(data.metrics);
         elements.metricsPanel.style.display = 'block';
 
+        updateProgress(100);
+        updateStatusText('완료! ✨');
+
+        // Auto-close after showing completion
+        await new Promise(resolve => setTimeout(resolve, 800));
+
     } catch (error) {
+        updateStatusText('⚠️ 오류 발생');
         alert('변환 중 오류가 발생했습니다: ' + error.message);
     } finally {
         setLoading(false);
@@ -217,11 +250,55 @@ function setLoading(isLoading) {
         elements.loadingOverlay.style.display = 'flex';
         elements.transformBtn.disabled = true;
         elements.transformBtn.classList.add('opacity-50', 'cursor-not-allowed');
+
+        // Reset process modal state
+        resetProcessModal();
     } else {
         elements.loadingOverlay.style.display = 'none';
         elements.transformBtn.disabled = false;
         elements.transformBtn.classList.remove('opacity-50', 'cursor-not-allowed');
     }
+}
+
+// Process Modal Control Functions
+function resetProcessModal() {
+    // Reset all steps to inactive state
+    elements.stepAnalyze.classList.remove('active', 'completed');
+    elements.stepTransform.classList.remove('active', 'completed');
+    elements.stepComplete.classList.remove('active', 'completed');
+
+    // Reset progress bar
+    elements.progressBar.style.width = '0%';
+
+    // Reset status text
+    elements.statusText.textContent = '텍스트를 분석하고 재구성하는 중...';
+}
+
+function updateProcessStep(step) {
+    // Remove all active/completed states
+    elements.stepAnalyze.classList.remove('active', 'completed');
+    elements.stepTransform.classList.remove('active', 'completed');
+    elements.stepComplete.classList.remove('active', 'completed');
+
+    // Set states based on current step
+    if (step === 'analyze') {
+        elements.stepAnalyze.classList.add('active');
+    } else if (step === 'transform') {
+        elements.stepAnalyze.classList.add('completed');
+        elements.stepTransform.classList.add('active');
+    } else if (step === 'complete') {
+        elements.stepAnalyze.classList.add('completed');
+        elements.stepTransform.classList.add('completed');
+        elements.stepComplete.classList.add('active');
+    }
+}
+
+function updateProgress(percentage) {
+    elements.progressBar.style.width = `${percentage}%`;
+}
+
+function updateStatusText(text) {
+    elements.statusText.textContent = text;
 }
 
 // Health Check

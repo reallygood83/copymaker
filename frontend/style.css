@@ -658,6 +658,160 @@ strong, b {
 }
 
 /* ============================================================================
+   Process Modal - Neo-Brutalism Style
+   ============================================================================ */
+
+/* Process Modal Container */
+.process-modal {
+  background: var(--primary-bg);
+  border: var(--border-thick);
+  box-shadow: var(--shadow-large);
+  padding: 40px;
+  max-width: 600px;
+  width: 90%;
+  animation: slideUp 0.3s ease;
+}
+
+/* Process Steps Container */
+.process-steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+/* Individual Step */
+.process-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px;
+  border: var(--border-thick);
+  background: var(--secondary-bg);
+  min-width: 120px;
+  transition: all 0.3s ease;
+}
+
+.process-step .step-icon {
+  font-size: 32px;
+  filter: grayscale(100%);
+  opacity: 0.5;
+  transition: all 0.3s ease;
+}
+
+.process-step .step-text {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--secondary-text);
+  transition: all 0.3s ease;
+}
+
+/* Active Step */
+.process-step.active {
+  background: var(--accent-1);
+  border-color: var(--primary-text);
+  box-shadow: var(--shadow-medium);
+}
+
+.process-step.active .step-icon {
+  filter: grayscale(0%);
+  opacity: 1;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.process-step.active .step-text {
+  color: var(--primary-text);
+  font-weight: 700;
+}
+
+/* Completed Step */
+.process-step.completed {
+  background: var(--accent-3);
+  border-color: var(--primary-text);
+}
+
+.process-step.completed .step-icon {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+.process-step.completed .step-text {
+  color: var(--primary-text);
+}
+
+/* Process Arrow */
+.process-arrow {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--secondary-text);
+}
+
+/* Progress Bar Container */
+.progress-container {
+  width: 100%;
+  height: 32px;
+  background: var(--secondary-bg);
+  border: var(--border-thick);
+  margin-bottom: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+  border-right: var(--border-thick);
+  transition: width 0.5s ease;
+  width: 0%;
+  position: relative;
+}
+
+.progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  animation: shimmer 2s infinite;
+}
+
+/* Current Status */
+.current-status {
+  text-align: center;
+}
+
+/* Pulse Animation for Active Step */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* Shimmer Animation for Progress Bar */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* ============================================================================
    Range Slider & Grid Utilities - Neo-Brutalism Style
    ============================================================================ */
 

@@ -177,10 +177,40 @@
                         style="position: absolute; inset: 0; border: none; box-shadow: none; resize: none; font-size: 16px; line-height: 1.8; background: var(--primary-bg);"
                         placeholder="변환 결과가 여기에 표시됩니다..."></textarea>
 
-                    <!-- Loading Overlay -->
+                    <!-- Process Modal -->
                     <div id="loading-overlay" class="loading-overlay" style="display: none;">
-                        <div class="loading-spinner"></div>
-                        <p style="margin-top: 20px; font-size: 16px; font-weight: 600;">텍스트를 분석하고 재구성하는 중...</p>
+                        <div class="process-modal">
+                            <!-- Process Steps -->
+                            <div class="process-steps">
+                                <div class="process-step" id="step-analyze">
+                                    <div class="step-icon">📝</div>
+                                    <div class="step-text">텍스트 분석</div>
+                                </div>
+                                <div class="process-arrow">→</div>
+                                <div class="process-step" id="step-transform">
+                                    <div class="step-icon">🔄</div>
+                                    <div class="step-text">AI 변환</div>
+                                </div>
+                                <div class="process-arrow">→</div>
+                                <div class="process-step" id="step-complete">
+                                    <div class="step-icon">✅</div>
+                                    <div class="step-text">완료</div>
+                                </div>
+                            </div>
+
+                            <!-- Progress Bar -->
+                            <div class="progress-container">
+                                <div class="progress-bar" id="progress-bar"></div>
+                            </div>
+
+                            <!-- Current Status -->
+                            <div class="current-status">
+                                <div class="loading-spinner"></div>
+                                <p id="status-text" style="margin-top: 16px; font-size: 16px; font-weight: 600; color: var(--primary-text);">
+                                    텍스트를 분석하고 재구성하는 중...
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
