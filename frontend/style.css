@@ -1,0 +1,735 @@
+/* ============================================================================
+   Not_GPT - Neo-Brutalism Design System
+   Version: 2.0
+   Last Updated: 2025-12-02
+   ============================================================================ */
+
+/* Google Fonts - Space Grotesk & Pretendard */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700;800&display=swap');
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+/* ============================================================================
+   CSS Variables - Neo-Brutalism Color System
+   ============================================================================ */
+:root {
+  /* Primary Colors - High Contrast */
+  --primary-bg: #FFFFFF;
+  --primary-text: #000000;
+  --secondary-bg: #F5F5F5;
+
+  /* Accent Colors - Bright & Bold */
+  --accent-1: #FF6B6B;      /* Bright Red */
+  --accent-2: #4ECDC4;      /* Cyan */
+  --accent-3: #FFE66D;      /* Yellow */
+  --accent-4: #A8DADC;      /* Light Blue */
+  --accent-5: #95E1D3;      /* Mint */
+  --accent-6: #F38181;      /* Coral */
+
+  /* Shadows - Hard & Bold (No Blur!) */
+  --shadow-small: 4px 4px 0px #000000;
+  --shadow-medium: 6px 6px 0px #000000;
+  --shadow-large: 8px 8px 0px #000000;
+  --shadow-xl: 12px 12px 0px #000000;
+
+  /* Borders - Thick & Bold */
+  --border-thin: 2px solid #000000;
+  --border-thick: 4px solid #000000;
+  --border-extra-thick: 6px solid #000000;
+  --border-ultra-thick: 8px solid #000000;
+
+  /* Spacing */
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+
+  /* Border Radius - Minimal for geometric look */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+}
+
+/* ============================================================================
+   Base Styles - Reset & Foundation
+   ============================================================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Space Grotesk', sans-serif;
+  background-color: var(--primary-bg);
+  color: var(--primary-text);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ============================================================================
+   Typography - Bold & Geometric
+   ============================================================================ */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Grotesk', 'Pretendard', sans-serif;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: var(--space-sm);
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: 3rem;        /* 48px */
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: 2.25rem;     /* 36px */
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 1.5rem;      /* 24px */
+  font-weight: 700;
+}
+
+h4 {
+  font-size: 1.25rem;     /* 20px */
+  font-weight: 700;
+}
+
+p {
+  margin-bottom: var(--space-sm);
+  font-weight: 400;
+}
+
+strong, b {
+  font-weight: 700;
+}
+
+/* ============================================================================
+   Button Components - Neo-Brutalism Style
+   ============================================================================ */
+.btn-neo {
+  background: var(--accent-1);
+  color: var(--primary-text);
+  border: var(--border-thick);
+  box-shadow: var(--shadow-medium);
+  padding: 16px 32px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  position: relative;
+}
+
+.btn-neo:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 4px 4px 0px #000000;
+}
+
+.btn-neo:active {
+  transform: translate(6px, 6px);
+  box-shadow: 0px 0px 0px #000000;
+}
+
+.btn-neo:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Button Color Variants */
+.btn-neo-primary {
+  background: var(--accent-1);
+}
+
+.btn-neo-secondary {
+  background: var(--accent-2);
+}
+
+.btn-neo-success {
+  background: var(--accent-5);
+}
+
+.btn-neo-warning {
+  background: var(--accent-3);
+}
+
+.btn-neo-white {
+  background: var(--primary-bg);
+  border: var(--border-thick);
+}
+
+/* Button Sizes */
+.btn-neo-sm {
+  padding: 12px 24px;
+  font-size: 0.875rem;
+}
+
+.btn-neo-lg {
+  padding: 20px 40px;
+  font-size: 1.125rem;
+}
+
+.btn-neo-block {
+  width: 100%;
+  display: block;
+}
+
+/* ============================================================================
+   Input & Form Components - Neo-Brutalism Style
+   ============================================================================ */
+.input-neo {
+  background: var(--primary-bg);
+  border: var(--border-thick);
+  box-shadow: var(--shadow-small);
+  padding: 12px 16px;
+  font-size: 1rem;
+  font-family: 'Pretendard', sans-serif;
+  color: var(--primary-text);
+  outline: none;
+  width: 100%;
+  transition: all 0.2s ease;
+}
+
+.input-neo:focus {
+  border-color: var(--accent-2);
+  box-shadow: var(--shadow-medium);
+  transform: translateY(-2px);
+}
+
+.input-neo::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+/* Textarea */
+.textarea-neo {
+  background: var(--primary-bg);
+  border: var(--border-thick);
+  box-shadow: var(--shadow-small);
+  padding: 16px;
+  font-size: 1rem;
+  font-family: 'Pretendard', sans-serif;
+  color: var(--primary-text);
+  outline: none;
+  width: 100%;
+  min-height: 200px;
+  resize: vertical;
+  transition: all 0.2s ease;
+  line-height: 1.6;
+}
+
+.textarea-neo:focus {
+  border-color: var(--accent-2);
+  box-shadow: var(--shadow-medium);
+  transform: translateY(-2px);
+}
+
+/* Label */
+.label-neo {
+  display: block;
+  font-weight: 700;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-xs);
+  color: var(--primary-text);
+}
+
+/* Checkbox & Radio */
+.checkbox-neo,
+.radio-neo {
+  width: 24px;
+  height: 24px;
+  border: var(--border-thick);
+  background: var(--primary-bg);
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  position: relative;
+  margin-right: var(--space-xs);
+}
+
+.checkbox-neo:checked::before {
+  content: "✓";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--primary-text);
+}
+
+.radio-neo {
+  border-radius: 50%;
+}
+
+.radio-neo:checked::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  background: var(--primary-text);
+  border-radius: 50%;
+}
+
+/* ============================================================================
+   Card & Container Components
+   ============================================================================ */
+.card-neo {
+  background: var(--primary-bg);
+  border: var(--border-extra-thick);
+  box-shadow: var(--shadow-large);
+  padding: var(--space-md);
+  margin-bottom: var(--space-md);
+  transition: all 0.2s ease;
+}
+
+.card-neo:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 10px 10px 0px #000000;
+}
+
+.card-neo-sm {
+  padding: var(--space-sm);
+  border: var(--border-thick);
+  box-shadow: var(--shadow-small);
+}
+
+.card-neo-lg {
+  padding: var(--space-lg);
+  border: var(--border-ultra-thick);
+  box-shadow: var(--shadow-xl);
+}
+
+/* Card with colored accent */
+.card-neo-accent {
+  border-left: 16px solid var(--accent-1);
+}
+
+.card-neo-accent-cyan {
+  border-left: 16px solid var(--accent-2);
+}
+
+.card-neo-accent-yellow {
+  border-left: 16px solid var(--accent-3);
+}
+
+/* ============================================================================
+   Layout Components - Grid & Containers
+   ============================================================================ */
+.container-neo {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+  width: 100%;
+}
+
+.section-neo {
+  padding: var(--space-xl) 0;
+  position: relative;
+}
+
+.section-neo-divider {
+  border-bottom: var(--border-thick);
+  margin: var(--space-lg) 0;
+}
+
+/* Grid System */
+.grid-neo {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.grid-neo-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-neo-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-neo-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* Flex Utilities */
+.flex-neo {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.flex-neo-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-neo-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ============================================================================
+   Modal Component - Neo-Brutalism Style
+   ============================================================================ */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease;
+}
+
+.modal-neo {
+  background: var(--primary-bg);
+  border: var(--border-ultra-thick);
+  box-shadow: var(--shadow-xl);
+  padding: var(--space-lg);
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+  animation: slideUp 0.3s ease;
+}
+
+.modal-header {
+  border-bottom: var(--border-thick);
+  padding-bottom: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.modal-close {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  background: var(--primary-text);
+  color: var(--primary-bg);
+  border: none;
+  width: 32px;
+  height: 32px;
+  font-size: 1.5rem;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-close:hover {
+  background: var(--accent-1);
+  color: var(--primary-text);
+}
+
+/* ============================================================================
+   Header Component - Fixed Top Bar
+   ============================================================================ */
+.header-neo {
+  background: var(--primary-bg);
+  border-bottom: var(--border-extra-thick);
+  padding: var(--space-md);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-medium);
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-neo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ============================================================================
+   Alert & Notification Components
+   ============================================================================ */
+.alert-neo {
+  border: var(--border-thick);
+  padding: var(--space-sm) var(--space-md);
+  margin-bottom: var(--space-md);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.alert-neo-success {
+  background: var(--accent-5);
+  border-color: var(--primary-text);
+}
+
+.alert-neo-error {
+  background: var(--accent-1);
+  border-color: var(--primary-text);
+}
+
+.alert-neo-warning {
+  background: var(--accent-3);
+  border-color: var(--primary-text);
+}
+
+.alert-neo-info {
+  background: var(--accent-4);
+  border-color: var(--primary-text);
+}
+
+/* ============================================================================
+   Loading & Progress Components
+   ============================================================================ */
+.loader-neo {
+  border: var(--border-extra-thick);
+  border-top-color: var(--accent-1);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+.progress-neo {
+  width: 100%;
+  height: 30px;
+  background: var(--secondary-bg);
+  border: var(--border-thick);
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-neo-bar {
+  height: 100%;
+  background: var(--accent-1);
+  transition: width 0.3s ease;
+  border-right: var(--border-thick);
+}
+
+/* ============================================================================
+   Badge & Tag Components
+   ============================================================================ */
+.badge-neo {
+  display: inline-block;
+  padding: 4px 12px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: var(--border-thin);
+  background: var(--primary-bg);
+}
+
+.badge-neo-red {
+  background: var(--accent-1);
+}
+
+.badge-neo-cyan {
+  background: var(--accent-2);
+}
+
+.badge-neo-yellow {
+  background: var(--accent-3);
+}
+
+/* ============================================================================
+   Utility Classes
+   ============================================================================ */
+/* Spacing */
+.mt-xs { margin-top: var(--space-xs); }
+.mt-sm { margin-top: var(--space-sm); }
+.mt-md { margin-top: var(--space-md); }
+.mt-lg { margin-top: var(--space-lg); }
+.mt-xl { margin-top: var(--space-xl); }
+
+.mb-xs { margin-bottom: var(--space-xs); }
+.mb-sm { margin-bottom: var(--space-sm); }
+.mb-md { margin-bottom: var(--space-md); }
+.mb-lg { margin-bottom: var(--space-lg); }
+.mb-xl { margin-bottom: var(--space-xl); }
+
+.p-xs { padding: var(--space-xs); }
+.p-sm { padding: var(--space-sm); }
+.p-md { padding: var(--space-md); }
+.p-lg { padding: var(--space-lg); }
+.p-xl { padding: var(--space-xl); }
+
+/* Text Alignment */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+/* Text Transform */
+.uppercase { text-transform: uppercase; }
+.lowercase { text-transform: lowercase; }
+.capitalize { text-transform: capitalize; }
+
+/* Font Weight */
+.font-bold { font-weight: 700; }
+.font-extrabold { font-weight: 800; }
+.font-normal { font-weight: 400; }
+
+/* Display */
+.hidden { display: none; }
+.block { display: block; }
+.inline-block { display: inline-block; }
+.flex { display: flex; }
+.grid { display: grid; }
+
+/* Position */
+.relative { position: relative; }
+.absolute { position: absolute; }
+.fixed { position: fixed; }
+.sticky { position: sticky; }
+
+/* Width */
+.w-full { width: 100%; }
+.w-auto { width: auto; }
+
+/* ============================================================================
+   Animations
+   ============================================================================ */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease;
+}
+
+.animate-slideUp {
+  animation: slideUp 0.4s ease;
+}
+
+.animate-shake {
+  animation: shake 0.5s cubic-bezier(.36,.07,.19,.97);
+}
+
+/* ============================================================================
+   Responsive Design - Mobile First
+   ============================================================================ */
+@media (max-width: 768px) {
+  :root {
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .grid-neo-2,
+  .grid-neo-3,
+  .grid-neo-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-neo {
+    width: 95%;
+    padding: var(--space-md);
+  }
+
+  .btn-neo {
+    padding: 14px 28px;
+  }
+
+  .header-neo {
+    padding: var(--space-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .card-neo {
+    padding: var(--space-sm);
+    border: var(--border-thick);
+    box-shadow: var(--shadow-small);
+  }
+
+  .btn-neo {
+    width: 100%;
+    padding: 12px 24px;
+  }
+}
+
+/* ============================================================================
+   Dark Mode Support (Optional for future)
+   ============================================================================ */
+@media (prefers-color-scheme: dark) {
+  /* Keep Neo-Brutalism light theme by default */
+  /* Add dark mode styles here if needed in future */
+}
+
+/* ============================================================================
+   Print Styles
+   ============================================================================ */
+@media print {
+  .btn-neo,
+  .header-neo,
+  .modal-overlay {
+    display: none;
+  }
+
+  body {
+    background: white;
+  }
+
+  .card-neo {
+    box-shadow: none;
+    page-break-inside: avoid;
+  }
+}
